@@ -132,6 +132,7 @@
     NSMutableURLRequest* request = [self requestWithMethod:@"PUT" path:canonicalizedResource parameters:nil];
     [request addValue:[NSString stringWithFormat:@"%ld", (long)[data length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:data];
+    if (_timeoutInterval) [request setTimeoutInterval:_timeoutInterval];
 
     AFHTTPRequestOperation* operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation* operation, id responseObject) {
         if (success) success(operation, responseObject);
@@ -161,6 +162,7 @@
     [self setDefaultHeader:@"Authorization" value:authorizationString];
 
     NSMutableURLRequest* request = [self requestWithMethod:@"GET" path:canonicalizedResource parameters:nil];
+    if (_timeoutInterval) [request setTimeoutInterval:_timeoutInterval];
 
     AFHTTPRequestOperation* operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation* operation, id responseObject) {
         if (success) success(operation, responseObject);

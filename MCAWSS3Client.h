@@ -43,6 +43,7 @@ typedef enum {
 @property (nonatomic, retain) NSString* sessionToken;
 @property (nonatomic, retain) NSString* bucket;
 @property (nonatomic, assign) BOOL integrityCheck;
+@property (nonatomic, assign) NSTimeInterval timeoutInterval;
 
 - (void)putObjectWithData:(NSData*)data key:(NSString*)key mimeType:(NSString*)mimeType success:(void (^)(AFHTTPRequestOperation* operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation* operation, NSError* error))failure;
 - (void)putObjectWithData:(NSData*)data key:(NSString*)key mimeType:(NSString*)mimeType progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress success:(void (^)(AFHTTPRequestOperation* operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation* operation, NSError* error))failure;
